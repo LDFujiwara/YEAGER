@@ -1,0 +1,40 @@
+name: Daily Intel Pull
+
+on:
+  schedule:
+    - cron: "0 11 * * *"  # 11:00 UTC daily (~7am ET / ~4am PT) — adjust as you like
+  workflow_dispatch: {}  # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write  # needed so the workflow can commit results back to the repo
+
+jobs:
+  pull-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline (pull, cluster, tag)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/run_pipeline.py
+
+      - name: Build static site
+        run: python scripts/build_site.py
+
+      - name: Commit and push results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ docs/
+          git diff --staged --quiet || git commit -m "Daily intel pull: $(date -u +%Y-%m-%d)"
+          git push
