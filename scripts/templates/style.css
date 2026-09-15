@@ -1,0 +1,35 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+body { background: #14161c; color: #d7dae0; }
+header { position: sticky; top: 0; background: #1a1d24; padding: 16px 20px; border-bottom: 1px solid #2a2e38; z-index: 10; }
+header h1 { font-size: 18px; margin-bottom: 10px; }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; }
+.filters select, .filters input { background: #20232c; color: #d7dae0; border: 1px solid #2a2e38; border-radius: 6px; padding: 6px 10px; font-size: 13px; }
+.filters input { flex: 1; min-width: 200px; }
+main { padding: 20px; max-width: 900px; margin: 0 auto; }
+.card { background: #1a1d24; border: 1px solid #2a2e38; border-radius: 8px; padding: 16px; margin-bottom: 14px; }
+.card-date { font-size: 11px; color: #7d8494; margin-bottom: 6px; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #2b6cb0; color: white; }
+.tag.function { background: #6b46c1; }
+.tag.type { background: #b7791f; }
+.highlight { font-size: 14px; margin-bottom: 6px; padding-left: 14px; border-left: 2px solid #2a2e38; }
+.highlight a { color: #5b9bd5; text-decoration: none; font-size: 12px; margin-left: 6px; }
+.sources { font-size: 12px; color: #7d8494; margin-top: 8px; }
+
+.tabs { display: flex; gap: 8px; margin-bottom: 10px; }
+.tab-btn { background: #20232c; color: #7d8494; border: 1px solid #2a2e38; border-radius: 6px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+.tab-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.hidden { display: none; }
+
+.assessment-item { background: #1a1d24; border: 1px solid #2a2e38; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
+.assessment-item a { color: #d7dae0; text-decoration: none; font-size: 15px; font-weight: 600; }
+.assessment-item .assessment-date { font-size: 11px; color: #7d8494; margin-top: 4px; }
+
+.assessment-page { max-width: 760px; margin: 0 auto; padding: 30px 20px; }
+.back-link { color: #5b9bd5; text-decoration: none; font-size: 13px; }
+.assessment-page h1 { margin-top: 16px; font-size: 26px; }
+.assessment-date { color: #7d8494; font-size: 13px; margin-bottom: 20px; }
+.assessment-body { line-height: 1.7; font-size: 15px; }
+.assessment-body h2 { margin-top: 24px; margin-bottom: 10px; }
+.assessment-body p { margin-bottom: 14px; }
+.assessment-body ul, .assessment-body ol { margin-bottom: 14px; padding-left: 22px; }
