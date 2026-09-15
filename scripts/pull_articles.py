@@ -63,7 +63,9 @@ def pull_from_feeds(max_per_feed: int = 8):
     articles = []
     for feed_url in ALL_FEEDS:
         try:
-            parsed = feedparser.parse(feed_url)
+            resp = requests.get(feed_url, headers=HEADERS, timeout=FETCH_TIMEOUT)
+            resp.raise_for_status()
+            parsed = feedparser.parse(resp.content)
             source_name = parsed.feed.get("title", feed_url)
             for entry in parsed.entries[:max_per_feed]:
                 url = entry.get("link")
